@@ -1,0 +1,238 @@
+---
+title: "Document based on Unifrog Theme"
+---
+
+```{r theme_setup}
+#| collapse: true
+#| echo: false
+# Do not change this file except for the last line, or the project will not render correctly
+library(tidyverse)
+library(unifrog)
+library(ragg)
+ragg_png = function(..., res = 192) {
+  ragg::agg_png(..., res = res, units = "in")
+}
+knitr::opts_chunk$set(dev = "ragg_png", fig.ext = "png")
+dev.args = list(ragg_png = list(res = 192))
+```
+
+## Prerequisites - Just a One-Off
+
+::: panel-tabset
+## Quarto
+
+Install the latest version of [Quarto](https://quarto.org/docs/get-started/)
+
+## Fonts
+
+-   Download Open Sans and Fira Code fonts on your system using [this
+    link](https://fonts.google.com/share?selection.family=Fira%20Code:wght@300%7COpen%20Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800).
+
+-   Select All Styles
+
+-   Download All
+
+-   Open the zip file and in each font folder double-click any files ending in `.ttf` . There should be 2 for Open Sans
+    and 1 for Fira Code
+
+-   Click Install
+
+## Packages
+
+You can run the code this code to install most of the packages.
+
+```{r}
+#| eval: false
+install.packages(c("devtools", "datawizard","keyring", "DBI", "odbc", "ggtext", "glue", "ragg","tidyverse","insight","unikn"))
+```
+
+-   devtools - to install the custom Unifrog package
+
+-   keyring - for Azure database authentication
+
+-   DBI - for database queries
+
+-   odbc - for accessing the Azure database
+
+-   ggtext - markdown text in plots
+
+-   glue - helps with sql
+
+-   datawizard and insight - help with error handling of palettes
+
+-   tidyverse - of course!
+
+-   unikn - colour palette tools
+
+unifrog
+
+-   In RStudio, Tools \> Install Packages... \> Install From
+
+-   Select "Package Archive File"
+
+-   find the latest version of the package (e.g. unifrog_0.2.0.zip) at
+    `10 Data Team\Analytics\Ishmael's Folder\Projects`
+
+## Before you start
+
+Run `setupAzure()` to enter your Azure credentials.
+
+Tools \> Global Options \> General \> Graphics
+
+Set backend to AGG. (Better rendering.)
+:::
+
+## Working Guidelines
+
+-   .sql queries into the `queries` folder
+
+-   supporting .R scripts into `scripts`
+
+-   outputs from .sql queries or Athena into `csv`
+
+-   all files starting with START_HERE can be deleted.
+
+-   new markdown documents should contain the {r theme_setup} code chunk verbatim (easiest to copy template.qmd and
+    delete what you don't need.
+
+Quarto References
+
+[Tutorials to get you started](https://quarto.org/docs/get-started/hello/rstudio.html)
+
+[Guides](https://quarto.org/docs/guide/) - most useful are Authoring, Computations and Documents \> HTML
+
+[Reference](https://quarto.org/docs/reference/) - also useful for looking up.
+
+## Unifrog Library Functions
+
+### getAzureResults()
+
+Type `?getAzureResults` to see the help file. You'll need to read in the `.sql` file using `readr::read_file` and then make
+it SQL-friendly again by using `glue::glue_sql`. Example code below using the suggested folder structure conventions.
+
+```{r queryAzure}
+#| eval: false
+library(unifrog)
+library(tidyverse)
+library(glue)
+
+query <- glue_sql(read_file('queries/query_name.sql'))
+
+df <- getAzureResults(query, output = 'csv/query_name.csv', overwrite = FALSE)
+
+```
+
+### Unifrog Colors
+
+This helps extract the unifrog palette colours as hex codes. Type `?unifrog_colors` for documentation. Examples below.
+
+```{r unifrog_colors}
+unifrog_colors()
+```
+
+```{r unifrog_colors_specified}
+unifrog_colors("green", "lightblue", "darkgrey")
+```
+
+#### unikn
+
+You can view the palettes in a pretty way using the `unikn` package
+
+```{r}
+library(unikn)
+seecol(unifrog_colors(), main = "The entire Unifrog colour scheme")
+```
+
+```{r}
+seecol(unifrog_main, main = "The \"main\" palette is default for discrete data")
+```
+
+```{r}
+seecol(likert3, main = "The \"likert3\" palette is default for continuous data")
+```
+
+```{r}
+seecol(unifrog_palettes,
+       main = "The names of all of the Unifrog palettes",
+       pal_names = names(unifrog_palettes))
+```
+
+They have been grouped in three categories:
+
+Discrete - 'unifrog_main'
+
+Sequential - 'unifrog_blues', 'unifrog_greens', 'unifrog_oranges', 'unifrog_reds'
+
+Diverging - 'likert3', 'likert5', 'likert7'
+
+### scale_fill_unifrog
+
+Type `?scale_color_unifrog` for documentation. Examples below.
+
+If no fill is specified, for a categorical variable, then the default is `scale_fill_unifrog_d("unifrog_main")`.
+
+```{r}
+ggplot(iris, aes(x = Species, y = Sepal.Length, fill = Species)) +
+  geom_boxplot() +
+  theme_bw()
+```
+
+You can see that the addition of line 4 has no effect on the output
+
+```{r}
+#| code-line-numbers: true
+ggplot(iris, aes(x = Species, y = Sepal.Length, fill = Species)) +
+  geom_boxplot() +
+  theme_bw() +
+  scale_fill_unifrog_d()
+```
+
+Addition of `reverse = TRUE` on line 4starts from the opposite end of the palette.
+
+```{r}
+#| code-line-numbers: true
+ggplot(iris, aes(x = Species, y = Sepal.Length, fill = Species)) +
+  geom_boxplot() +
+  theme_bw() +
+  scale_fill_unifrog_d(reverse = TRUE)
+```
+
+In order to guarantee the colour reversal for `unifrog_main` use `fct_rev` in the fill argument.
+
+```{r}
+#| code-line-numbers: true
+ggplot(iris, aes(x = Species, y = Sepal.Length, fill = fct_rev(Species))) +
+  geom_boxplot() +
+  theme_bw() +
+  scale_fill_unifrog_d()
+```
+
+If you want to use a different palette, you can specify it with the palette argument.
+
+::: callout-note
+Note a sequential palette does not often make sense for bar charts.
+:::
+
+```{r}
+ggplot(iris, aes(x = Species, y = Sepal.Length, fill = Species)) +
+  geom_violin() +
+  scale_fill_unifrog_d(palette = "unifrog_greens") +
+  theme_bw()
+```
+
+### scale_color_unifrog
+
+For continuous variables, the default is `scale_fill_unifrog_c("likert3")`
+
+```{r}
+ggplot(mpg, aes(x = displ, y = hwy, color = hwy)) +
+  geom_point() +
+  theme_bw()
+```
+You can change this the same way as shown above but using the color aesthetic.
+```{r}
+ggplot(mpg, aes(x = displ, y = hwy, color = hwy)) +
+  geom_point() +
+  scale_color_unifrog_c('likert5') +
+  theme_bw()
+```

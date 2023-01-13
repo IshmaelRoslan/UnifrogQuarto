@@ -1,0 +1,24 @@
+---
+title: "Document based on Unifrog Theme"
+author: "Who are you?"
+---
+
+```{r theme_setup}
+#| collapse: true
+#| echo: false
+# Do not change this file except for the last line, or the project will not render correctly
+library(tidyverse)
+library(unifrog)
+library(ragg)
+ragg_png = function(..., res = 192) {
+  ragg::agg_png(..., res = res, units = "in")
+}
+knitr::opts_chunk$set(dev = "ragg_png", fig.ext = "png")
+dev.args = list(ragg_png = list(res = 192))
+```
+
+## Enjoy!
+
+```{r first_code_block}
+print("Hello World")
+```
