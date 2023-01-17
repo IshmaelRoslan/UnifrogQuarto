@@ -132,11 +132,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li>
 <a href="#unifrog-library-functions" id="toc-unifrog-library-functions" class="nav-link" data-scroll-target="#unifrog-library-functions"><span class="toc-section-number">3</span>  Unifrog Library Functions</a>
   <ul>
-<li><a href="#queryazure" id="toc-queryazure" class="nav-link" data-scroll-target="#queryazure"><span class="toc-section-number">3.1</span>  queryAzure()</a></li>
+<li><a href="#getazureresults" id="toc-getazureresults" class="nav-link" data-scroll-target="#getazureresults"><span class="toc-section-number">3.1</span>  getAzureResults()</a></li>
   <li>
 <a href="#unifrog-colors" id="toc-unifrog-colors" class="nav-link" data-scroll-target="#unifrog-colors"><span class="toc-section-number">3.2</span>  Unifrog Colors</a>
   <ul class="collapse">
-<li><a href="#bonus-unikn" id="toc-bonus-unikn" class="nav-link" data-scroll-target="#bonus-unikn"><span class="toc-section-number">3.2.1</span>  Bonus: unikn</a></li>
+<li><a href="#unikn" id="toc-unikn" class="nav-link" data-scroll-target="#unikn"><span class="toc-section-number">3.2.1</span>  unikn</a></li>
   </ul>
 </li>
   <li><a href="#scale_fill_unifrog" id="toc-scale_fill_unifrog" class="nav-link" data-scroll-target="#scale_fill_unifrog"><span class="toc-section-number">3.3</span>  scale_fill_unifrog</a></li>
@@ -216,9 +216,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><a href="https://quarto.org/docs/reference/">Reference</a> - also useful for looking up.</p>
 </section><section id="unifrog-library-functions" class="level2" data-number="3"><h2 data-number="3" class="anchored" data-anchor-id="unifrog-library-functions">
 <span class="header-section-number">3</span> Unifrog Library Functions</h2>
-<section id="queryazure" class="level3" data-number="3.1"><h3 data-number="3.1" class="anchored" data-anchor-id="queryazure">
-<span class="header-section-number">3.1</span> queryAzure()</h3>
-<p>Type <code>?queryAzure</code> to see the help file. You’ll need to read in the <code>.sql</code> file using <code><a href="https://readr.tidyverse.org/reference/read_file.html">readr::read_file</a></code> and then make it SQL-friendly again by using <code><a href="https://glue.tidyverse.org/reference/glue_sql.html">glue::glue_sql</a></code>. Example code below using the suggested folder structure conventions.</p>
+<section id="getazureresults" class="level3" data-number="3.1"><h3 data-number="3.1" class="anchored" data-anchor-id="getazureresults">
+<span class="header-section-number">3.1</span> getAzureResults()</h3>
+<p>Type <code>?getAzureResults</code> to see the help file. You’ll need to read in the <code>.sql</code> file using <code><a href="https://readr.tidyverse.org/reference/read_file.html">readr::read_file</a></code> and then make it SQL-friendly again by using <code><a href="https://glue.tidyverse.org/reference/glue_sql.html">glue::glue_sql</a></code>. Example code below using the suggested folder structure conventions.</p>
 <div class="cell">
 <details open=""><summary>Show/Hide Code</summary><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="fu">library</span>(unifrog)</span>
 <span id="cb2-2"><a href="#cb2-2"></a><span class="fu">library</span>(tidyverse)</span>
@@ -226,7 +226,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb2-4"><a href="#cb2-4"></a></span>
 <span id="cb2-5"><a href="#cb2-5"></a>query <span class="ot">&lt;-</span> <span class="fu">glue_sql</span>(<span class="fu">read_file</span>(<span class="st">'queries/query_name.sql'</span>))</span>
 <span id="cb2-6"><a href="#cb2-6"></a></span>
-<span id="cb2-7"><a href="#cb2-7"></a>df <span class="ot">&lt;-</span> <span class="fu">queryAzure</span>(query, <span class="at">output =</span> <span class="st">'csv/query_name.csv'</span>, <span class="at">overwrite =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-7"><a href="#cb2-7"></a>df <span class="ot">&lt;-</span> <span class="fu">getAzureResults</span>(query, <span class="at">output =</span> <span class="st">'csv/query_name.csv'</span>, <span class="at">overwrite =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 </section><section id="unifrog-colors" class="level3" data-number="3.2"><h3 data-number="3.2" class="anchored" data-anchor-id="unifrog-colors">
@@ -248,9 +248,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 "#33cc99" "#17a0ff" "#8c8c8c" </code></pre>
 </div>
 </div>
-<section id="bonus-unikn" class="level4" data-number="3.2.1"><h4 data-number="3.2.1" class="anchored" data-anchor-id="bonus-unikn">
-<span class="header-section-number">3.2.1</span> Bonus: unikn</h4>
-<p>If you have the <code>unikn</code> package installed (optional), you can view the palettes in a pretty way</p>
+<section id="unikn" class="level4" data-number="3.2.1"><h4 data-number="3.2.1" class="anchored" data-anchor-id="unikn">
+<span class="header-section-number">3.2.1</span> unikn</h4>
+<p>You can view the palettes in a pretty way using the <code>unikn</code> package</p>
 <div class="cell">
 <details open=""><summary>Show/Hide Code</summary><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="fu">library</span>(unikn)</span>
 <span id="cb7-2"><a href="#cb7-2"></a><span class="fu">seecol</span>(<span class="fu">unifrog_colors</span>(), <span class="at">main =</span> <span class="st">"The entire Unifrog colour scheme"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -335,7 +335,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 </div>
-<p>In order to guarantee the colour reversal use <code>fct_rev</code> in the fill argument.</p>
+<p>In order to guarantee the colour reversal for <code>unifrog_main</code> use <code>fct_rev</code> in the fill argument.</p>
 <div class="cell">
 <details open=""><summary>Show/Hide Code</summary><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a><span class="fu">ggplot</span>(iris, <span class="fu">aes</span>(<span class="at">x =</span> Species, <span class="at">y =</span> Sepal.Length, <span class="at">fill =</span> <span class="fu">fct_rev</span>(Species))) <span class="sc">+</span></span>
 <span id="cb14-2"><a href="#cb14-2"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
@@ -710,9 +710,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb18-107"><a href="#cb18-107"></a></span>
 <span id="cb18-108"><a href="#cb18-108"></a><span class="fu">## Unifrog Library Functions</span></span>
 <span id="cb18-109"><a href="#cb18-109"></a></span>
-<span id="cb18-110"><a href="#cb18-110"></a><span class="fu">### queryAzure()</span></span>
+<span id="cb18-110"><a href="#cb18-110"></a><span class="fu">### getAzureResults()</span></span>
 <span id="cb18-111"><a href="#cb18-111"></a></span>
-<span id="cb18-112"><a href="#cb18-112"></a>Type <span class="in">`?queryAzure`</span> to see the help file. You'll need to read in the <span class="in">`.sql`</span> file using <span class="in">`readr::read_file`</span> and then make</span>
+<span id="cb18-112"><a href="#cb18-112"></a>Type <span class="in">`?getAzureResults`</span> to see the help file. You'll need to read in the <span class="in">`.sql`</span> file using <span class="in">`readr::read_file`</span> and then make</span>
 <span id="cb18-113"><a href="#cb18-113"></a>it SQL-friendly again by using <span class="in">`glue::glue_sql`</span>. Example code below using the suggested folder structure conventions.</span>
 <span id="cb18-114"><a href="#cb18-114"></a></span>
 <span id="cb18-115"><a href="#cb18-115"></a><span class="in">```{r queryAzure}</span></span>
@@ -723,7 +723,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb18-120"><a href="#cb18-120"></a></span>
 <span id="cb18-121"><a href="#cb18-121"></a>query <span class="ot">&lt;-</span> <span class="fu">glue_sql</span>(<span class="fu">read_file</span>(<span class="st">'queries/query_name.sql'</span>))</span>
 <span id="cb18-122"><a href="#cb18-122"></a></span>
-<span id="cb18-123"><a href="#cb18-123"></a>df <span class="ot">&lt;-</span> <span class="fu">queryAzure</span>(query, <span class="at">output =</span> <span class="st">'csv/query_name.csv'</span>, <span class="at">overwrite =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb18-123"><a href="#cb18-123"></a>df <span class="ot">&lt;-</span> <span class="fu">getAzureResults</span>(query, <span class="at">output =</span> <span class="st">'csv/query_name.csv'</span>, <span class="at">overwrite =</span> <span class="cn">FALSE</span>)</span>
 <span id="cb18-124"><a href="#cb18-124"></a></span>
 <span id="cb18-125"><a href="#cb18-125"></a><span class="in">```</span></span>
 <span id="cb18-126"><a href="#cb18-126"></a></span>
@@ -739,9 +739,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb18-136"><a href="#cb18-136"></a><span class="fu">unifrog_colors</span>(<span class="st">"green"</span>, <span class="st">"lightblue"</span>, <span class="st">"darkgrey"</span>)</span>
 <span id="cb18-137"><a href="#cb18-137"></a><span class="in">```</span></span>
 <span id="cb18-138"><a href="#cb18-138"></a></span>
-<span id="cb18-139"><a href="#cb18-139"></a><span class="fu">#### Bonus: unikn</span></span>
+<span id="cb18-139"><a href="#cb18-139"></a><span class="fu">#### unikn</span></span>
 <span id="cb18-140"><a href="#cb18-140"></a></span>
-<span id="cb18-141"><a href="#cb18-141"></a>If you have the <span class="in">`unikn`</span> package installed (optional), you can view the palettes in a pretty way</span>
+<span id="cb18-141"><a href="#cb18-141"></a>You can view the palettes in a pretty way using the <span class="in">`unikn`</span> package</span>
 <span id="cb18-142"><a href="#cb18-142"></a></span>
 <span id="cb18-145"><a href="#cb18-145"></a><span class="in">```{r}</span></span>
 <span id="cb18-146"><a href="#cb18-146"></a><span class="fu">library</span>(unikn)</span>
@@ -802,7 +802,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb18-213"><a href="#cb18-213"></a>  <span class="fu">scale_fill_unifrog_d</span>(<span class="at">reverse =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb18-214"><a href="#cb18-214"></a><span class="in">```</span></span>
 <span id="cb18-215"><a href="#cb18-215"></a></span>
-<span id="cb18-216"><a href="#cb18-216"></a>In order to guarantee the colour reversal use <span class="in">`fct_rev`</span> in the fill argument.</span>
+<span id="cb18-216"><a href="#cb18-216"></a>In order to guarantee the colour reversal for <span class="in">`unifrog_main`</span> use <span class="in">`fct_rev`</span> in the fill argument.</span>
 <span id="cb18-217"><a href="#cb18-217"></a></span>
 <span id="cb18-220"><a href="#cb18-220"></a><span class="in">```{r}</span></span>
 <span id="cb18-221"><a href="#cb18-221"></a><span class="co">#| code-line-numbers: true</span></span>
@@ -844,7 +844,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
-<script>var lightboxQuarto = GLightbox({"descPosition":"bottom","selector":".lightbox","closeEffect":"zoom","loop":true,"openEffect":"zoom"});</script>
+<script>var lightboxQuarto = GLightbox({"openEffect":"zoom","selector":".lightbox","descPosition":"bottom","loop":true,"closeEffect":"zoom"});</script>
 
 
 <script src="START_HERE_files/libs/quarto-html/zenscroll-min.js"></script>

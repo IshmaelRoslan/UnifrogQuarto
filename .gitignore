@@ -1,0 +1,9 @@
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+Unifrog Quarto.Rproj
+
+/.quarto/
+
+/.luarc.json
