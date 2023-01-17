@@ -1,6 +1,5 @@
 ---
 title: "Document based on Unifrog Theme"
-author: "Who are you?"
 ---
 
 ```{r theme_setup}
@@ -17,8 +16,29 @@ knitr::opts_chunk$set(dev = "ragg_png", fig.ext = "png")
 dev.args = list(ragg_png = list(res = 192))
 ```
 
-## Enjoy!
+## Working Guidelines
 
-```{r first_code_block}
-print("Hello World")
-```
+-   .sql queries into the `queries` folder
+
+-   supporting .R scripts into `scripts`
+
+-   outputs from .sql queries or Athena into `csv`
+
+-   new markdown documents should contain the {r theme_setup} code chunk verbatim (easiest to copy from above)
+
+## Unifrog Package Documentation
+
+For help connecting to Azure checkout [this vignette].(https://ishmaelroslan.github.io/UnifrogTools/articles/Azure.html)
+
+For help on themeing plots see this [vignette].(https://ishmaelroslan.github.io/UnifrogTools/articles/Palettes.html)
+
+## Custom Classes
+
+For highlighting words, there are custom classes, which set the text to bold and give the text the specified unifrog colour. In the example below the text orange has the `.orange` class. It is applied in markdown like so: `[this text is orange]{.orange}`.
+The available colours are shown below, with some examples
+
+* this text is [orange]{.orange}
+* this text [is green]{.green}
+* [this text]{.blue} is blue
+* this text is [red]{.red}
+* this text is [purple]{.purple}
