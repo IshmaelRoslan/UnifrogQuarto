@@ -2,46 +2,18 @@
 $theme-color: #33cc99;
 $unifrog-green: #33cc99;
 $unifrog-white: #FFFFFF;
-$unifrog-pink: #da669f;
-$unifrog-brown: #9F8A42;
+$unifrog-pink: #ec44f2;
+$unifrog-brown: #b54f0d;
 $unifrog-orange: #ff7901;
-$unifrog-lime: #16dd36;
 $unifrog-blue: #1561c8;
-$unifrog-dark-red: #a50036;
+$unifrog-red: #a50036;
 $unifrog-purple: #6815ad;
 $unifrog-yellow: #c89801;
 $unifrog-black: #000000;
 $unifrog-grey: #cccccc;
-/*$unifrog-color: #31869b;
-$unifrog-color: #f90505;
-$unifrog-color: #be54d9;
-$unifrog-color: #558465;
-$unifrog-color: #0b434a;
-$unifrog-color: #5959b6;
-$unifrog-color: #2f75b5;
-$unifrog-color: #346535;
-$unifrog-color: #a03030;
-$unifrog-color: #755b99;
-$unifrog-color: #4bc7c8;
-$unifrog-color: #ff0280;
-$unifrog-color: #007efa;
-$unifrog-color: #b65959;
-$unifrog-color: #d95459;
-$unifrog-color: #837aa3;
-$unifrog-color: #c65911;
-$unifrog-color: #ec44f2;
-$unifrog-color: #17a0ff;
-$unifrog-color: #00b0f0;
-$unifrog-color: #9b59b6;
-$unifrog-color: #a83181;
-$unifrog-color: #b54f0d;
-$unifrog-color: #7030a0;
-$unifrog-color: #81d8d0;
-$unifrog-color: #f76b37;
-$unifrog-color: #0052A5;
-$unifrog-color: #305496;
-$unifrog-color: #c6590f;
-*/
+$unifrog-darkgrey: #8c8c8c;
+$unifrog-lightblue: #17a0ff;
+ 
 
 $body-bg: $unifrog-white;
 $body-color: $unifrog-black;
@@ -84,7 +56,7 @@ $font-family-sans-serif: 'Open Sans', sans-serif;
 }
 
 .red {
-    color: $unifrog-dark-red;
+    color: $unifrog-red;
     font-weight: bold;
 }
 
