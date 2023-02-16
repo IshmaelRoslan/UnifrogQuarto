@@ -21,7 +21,9 @@ dev.args = list(ragg_png = list(res = 192))
 
 -   supporting .R scripts into `scripts`
 
--   outputs from .sql queries or Athena into `csv`
+-   outputs from .sql queries or Athena into `data`
+
+-   external images or charts into `images`
 
 -   new markdown documents should contain the {r theme_setup} code chunk verbatim (easiest to copy from above)
 
