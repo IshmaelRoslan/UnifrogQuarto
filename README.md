@@ -22,9 +22,9 @@ This a project template for the Unifrog Data team, which contains the files for 
 
 ## Working Guidelines
 
--   .sql queries into the `queries` folder
+-   .sql queries into the `SQL queries` folder
 
--   supporting .R scripts into `scripts`
+-   supporting .R scripts into ` R scripts`
 
 -   outputs from .sql queries or Athena into `csv`
 
