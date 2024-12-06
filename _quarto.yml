@@ -1,6 +1,7 @@
 project:
   title: "Quarto Template"
 
+
 author: "Ishmael Roslan"
 format:
   html: 
@@ -25,13 +26,25 @@ format:
     code-line-numbers: true
     highlight-style: dracula
     df-print: paged
-    filters: 
-      - lightbox
-    lightbox: auto
     fig-cap-location: top
+  docx:
+    reference-doc: unifrog.docx
+    dev: ragg_png
+    toc: true
+    toc-depth: 3
+    number-sections: true
+    number-depth: 3
+    highlight-style: dracula
+    page-width: 7
+    fig-width: 7
+    fig-align: center
+    fig-format: png
+    fig-asp: 0.625
 execute: 
   warning: false
   error: false
+  echo: false
+  freeze: auto
 editor: 
   markdown: 
     wrap: 120

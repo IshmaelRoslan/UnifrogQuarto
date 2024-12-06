@@ -8,13 +8,18 @@ title: "Document based on Unifrog Theme"
 # Do not change this file except for the last line, or the project will not render correctly
 library(tidyverse)
 library(unifrog)
+library(gt)
+library(marquee)
+set_unifrog_geoms()
+theme_set(unifrog_theme(grid = 'Y', axis = 'x'))
 library(ragg)
-ragg_png = function(..., res = 192) {
+ragg_png = function(..., res = 72) {
   ragg::agg_png(..., res = res, units = "in")
 }
-knitr::opts_chunk$set(dev = "ragg_png", fig.ext = "png")
-dev.args = list(ragg_png = list(res = 192))
+knitr::opts_chunk$set(dev = "ragg_png", fig.ext = "png", fig.width = 7, fig.height = 4)
+dev.args = list(ragg_png = list(res = 72))
 ```
+
 ## Working Guidelines
 
 -   .sql queries into the `queries` folder
@@ -29,17 +34,19 @@ dev.args = list(ragg_png = list(res = 192))
 
 ## Unifrog Package Documentation
 
-For help connecting to Azure checkout [this vignette].(https://ishmaelroslan.github.io/UnifrogTools/articles/Azure.html)
+For help connecting to Azure checkout \[this
+vignette\].(https://ishmaelroslan.github.io/UnifrogTools/articles/Azure.html)
 
-For help on themeing plots see this [vignette].(https://ishmaelroslan.github.io/UnifrogTools/articles/Palettes.html)
+For help on themeing plots see this \[vignette\].(https://ishmaelroslan.github.io/UnifrogTools/articles/Palettes.html)
 
 ## Custom Classes
 
-For highlighting words, there are custom classes, which set the text to bold and give the text the specified unifrog colour. In the example below the text orange has the `.orange` class. It is applied in markdown like so: `[this text is orange]{.orange}`.
-The available colours are shown below, with some examples
+For highlighting words, there are custom classes, which set the text to bold and give the text the specified unifrog
+colour. In the example below the text orange has the `.orange` class. It is applied in markdown like so:
+`[this text is orange]{.orange}`. The available colours are shown below, with some examples
 
-* this text is [orange]{.orange}
-* this text [is green]{.green}
-* [this text]{.blue} is blue
-* this text is [red]{.red}
-* this text is [purple]{.purple}
+-   this text is [orange]{.orange}
+-   this text [is green]{.green}
+-   [this text]{.blue} is blue
+-   this text is [red]{.red}
+-   this text is [purple]{.purple}
